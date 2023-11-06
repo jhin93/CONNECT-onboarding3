@@ -1,10 +1,11 @@
-// pages/index.js
+// pages/index.tsx
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, decrement } from '../store/counterSlice';
+import { RootState } from '../store/store';
 
 function Home() {
     const dispatch = useDispatch();
-    const count = useSelector((state) => state.counter);
+    const count = useSelector((state: RootState) => state.counter); // RootState 타입 사용
 
     return (
         <div>

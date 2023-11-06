@@ -1,9 +1,12 @@
-// store/store.js
+// store/store.ts
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
 import counterReducer from './counterSlice';
+
+// RootState 타입 정의
+export type RootState = ReturnType<typeof rootReducer>;
 
 // Saga
 function* rootSaga() {
