@@ -1,5 +1,5 @@
 
-import {put, take, takeLatest} from "@redux-saga/core/effects";
+import {put, takeLatest} from "@redux-saga/core/effects";
 import { toggleDarkMode } from "./themeSlice";
 
 function* toggleDarkModeSaga () {
