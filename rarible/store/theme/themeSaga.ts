@@ -1,5 +1,5 @@
 
-import {put, takeLatest} from "@redux-saga/core/effects";
+import { put } from "@redux-saga/core/effects";
 import { toggleDarkMode } from "./themeSlice";
 
 // Saga의 시작 지점

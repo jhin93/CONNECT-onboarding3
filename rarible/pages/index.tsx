@@ -1,6 +1,6 @@
 // pages/index.tsx
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement, resetCount } from '../store/counterSlice';
+import { increment, decrement, resetCount } from '../store/counter/counterSlice';
 import { toggleDarkMode } from '../store/theme/themeSlice';
 import { RootState } from '../store/store';
 
