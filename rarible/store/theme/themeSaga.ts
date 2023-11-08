@@ -9,6 +9,5 @@ function* toggleDarkModeSaga () {
 
 // 'toggleDarkModeSaga' 함수를 호출하는 사가 워쳐
 export function* watchThemeSagas() {
-    // THEME/TOGGLE_DARK_MODE' 액션을 감시하고, 해당 액션이 발생하면 `toggleDarkModeSaga` 함수를 호출
     yield toggleDarkModeSaga;
 }
