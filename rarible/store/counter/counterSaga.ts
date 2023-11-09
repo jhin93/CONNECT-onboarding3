@@ -17,7 +17,7 @@ function* handleReset() {
 
 // 'counterSaga' 함수를 호출하는 사가 워쳐
 export function* watchCounterSagas() {
-    yield takeEvery('incrementAsync', handleIncrement)
-    yield takeEvery('decrementAsync', handleDecrement)
-    yield takeEvery('resetAsync', handleReset)
+    yield takeEvery('COUNTER/INCREMENT', handleIncrement)
+    yield takeEvery('COUNTER/DECREMENT', handleDecrement)
+    yield takeEvery('COUNTER/RESET', handleReset)
 }

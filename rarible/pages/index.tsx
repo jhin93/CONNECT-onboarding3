@@ -16,13 +16,13 @@ function Home() {
     const handleButtonClick = (action: ActionType) => () => {
         switch (action) {
             case 'increment':
-                dispatch({ type: 'incrementAsync' });
+                dispatch({ type: 'COUNTER/INCREMENT' });
                 break;
             case 'decrement':
-                dispatch({ type: 'decrementAsync' });
+                dispatch({ type: 'COUNTER/DECREMENT' });
                 break;
             case 'reset':
-                dispatch({ type: 'resetAsync' });
+                dispatch({ type: 'COUNTER/RESET' });
                 break;
             default:
                 break;
