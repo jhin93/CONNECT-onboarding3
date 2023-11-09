@@ -9,7 +9,7 @@ function* counterSaga () {
     yield put(resetCount());
 }
 
-// 'toggleDarkModeSaga' 함수를 호출하는 사가 워쳐
+// 'counterSaga' 함수를 호출하는 사가 워쳐
 export function* watchCounterSagas() {
     yield counterSaga;
 }
