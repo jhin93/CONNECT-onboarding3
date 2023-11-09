@@ -1,5 +1,5 @@
 
-import { put } from "@redux-saga/core/effects";
+import { put, takeEvery } from "@redux-saga/core/effects";
 import { toggleDarkMode } from "./themeSlice";
 
 // Saga의 시작 지점
@@ -9,5 +9,5 @@ function* toggleDarkModeSaga () {
 
 // 'toggleDarkModeSaga' 함수를 호출하는 사가 워쳐
 export function* watchThemeSagas() {
-    yield toggleDarkModeSaga;
+    yield  takeEvery('THEME/TOGGLE_DARK_MODE_ASYNC', toggleDarkModeSaga);
 }
