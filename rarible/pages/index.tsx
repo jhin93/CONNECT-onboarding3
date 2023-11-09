@@ -1,6 +1,5 @@
 // pages/index.tsx
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleDarkMode } from '../store/theme/themeSlice';
 import { RootState } from '../store/store';
 
 type ActionType = 'increment' | 'decrement' | 'reset'
@@ -11,7 +10,7 @@ function Home() {
     const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
 
     const toggleTheme = () => {
-        dispatch(toggleDarkMode());
+        dispatch({ type: 'THEME/TOGGLE_DARK_MODE_ASYNC' });
     };
 
     const handleButtonClick = (action: ActionType) => () => {
