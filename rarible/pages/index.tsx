@@ -1,6 +1,5 @@
 // pages/index.tsx
 import { useDispatch, useSelector } from 'react-redux';
-import { increment, decrement, resetCount } from '../store/counter/counterSlice';
 import { toggleDarkMode } from '../store/theme/themeSlice';
 import { RootState } from '../store/store';
 
@@ -18,13 +17,13 @@ function Home() {
     const handleButtonClick = (action: ActionType) => () => {
         switch (action) {
             case 'increment':
-                dispatch(increment());
+                dispatch({ type: 'incrementAsync' });
                 break;
             case 'decrement':
-                dispatch(decrement());
+                dispatch({ type: 'decrementAsync' });
                 break;
             case 'reset':
-                dispatch(resetCount());
+                dispatch({ type: 'resetAsync' });
                 break;
             default:
                 break;
