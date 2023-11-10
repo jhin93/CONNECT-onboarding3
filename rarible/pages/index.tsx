@@ -1,6 +1,8 @@
 // pages/index.tsx
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
+import { useEffect } from "react";
+import getItems from "../feature/getItem";
 
 type ActionType = 'increment' | 'decrement' | 'reset'
 
@@ -8,6 +10,18 @@ function Home() {
     const dispatch = useDispatch();
     const count = useSelector((state: RootState) => state.counter);
     const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+
+    // useEffect(() => {
+    //     // dispatch({ type: 'COUNTER/INCREMENT' });
+    // }, []);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const result = await getItems();
+            console.log('Result:', result);
+        };
+        fetchData();
+    }, []);
 
     const toggleTheme = () => {
         dispatch({ type: 'THEME/TOGGLE_DARK_MODE_ASYNC' });
