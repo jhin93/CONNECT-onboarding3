@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { useEffect } from "react";
 import getItems from "../feature/getItem";
+import { fetchItemsStart } from '../store/fetch/itemSlice'; // 변경된 import 경로
 
 type ActionType = 'increment' | 'decrement' | 'reset'
 
@@ -10,18 +11,25 @@ function Home() {
     const dispatch = useDispatch();
     const count = useSelector((state: RootState) => state.counter);
     const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
+    const items = useSelector((state: RootState) => state.item.items);
 
     // useEffect(() => {
     //     // dispatch({ type: 'COUNTER/INCREMENT' });
     // }, []);
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const result = await getItems();
+    //         console.log('Result:', result);
+    //     };
+    //     fetchData();
+    // }, []);
+
     useEffect(() => {
-        const fetchData = async () => {
-            const result = await getItems();
-            console.log('Result:', result);
-        };
-        fetchData();
-    }, []);
+        dispatch({type: 'ITEM/FETCH_ITEMS_ASYNC'});
+    }, [dispatch]);
+
+    console.log("123123123 : ", items)
 
     const toggleTheme = () => {
         dispatch({ type: 'THEME/TOGGLE_DARK_MODE_ASYNC' });
