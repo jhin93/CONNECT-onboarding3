@@ -2,8 +2,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { useEffect } from "react";
-import getItems from "../feature/getItem";
-import { fetchItemsStart } from '../store/fetch/itemSlice'; // 변경된 import 경로
 
 type ActionType = 'increment' | 'decrement' | 'reset'
 
@@ -13,23 +11,13 @@ function Home() {
     const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
     const items = useSelector((state: RootState) => state.item.items);
 
-    // useEffect(() => {
-    //     // dispatch({ type: 'COUNTER/INCREMENT' });
-    // }, []);
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         const result = await getItems();
-    //         console.log('Result:', result);
-    //     };
-    //     fetchData();
-    // }, []);
-
     useEffect(() => {
         dispatch({type: 'ITEM/FETCH_ITEMS_ASYNC'});
-    }, [dispatch]);
+    }, []);
 
-    console.log("123123123 : ", items)
+    useEffect(() => {
+        console.log('Items have been updated:', items);
+    }, [items]); // 아이템 리스트에 변경이 있을 때 실행
 
     const toggleTheme = () => {
         dispatch({ type: 'THEME/TOGGLE_DARK_MODE_ASYNC' });
