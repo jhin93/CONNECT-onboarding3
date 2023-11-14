@@ -1,8 +1,9 @@
 // store/item/itemSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import ItemMetadata from "../../types/itemMetadata";
 
 interface ItemState {
-    items: []; // ItemMetadata[] 대신 any[]로 변경
+    items: ItemMetadata[];
     loading: boolean;
     error: string | null;
 }
