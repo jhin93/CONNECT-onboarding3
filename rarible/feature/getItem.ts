@@ -1,8 +1,7 @@
 import axios from "axios"
 import rawMetadata from "../types/rawMetadata"
 import ItemMetadata from "../types/itemMetadata";
-// let itemMetadataArr: ItemMetadata[] = [];
-let itemMetadataArr: any[] = [];
+let itemMetadataArr: ItemMetadata[] = [];
 let itemDataList;
 
 const getItems = async() =>  {
