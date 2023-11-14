@@ -16,7 +16,7 @@ function Home() {
     }, []);
 
     useEffect(() => {
-        console.log('Items have been updated:', items);
+        console.log('(index.tsx)Items have been updated:', items);
     }, [items]); // 아이템 리스트에 변경이 있을 때 실행
 
     const toggleTheme = () => {
@@ -41,12 +41,17 @@ function Home() {
 
     return (
         <div className={isDarkMode ? 'dark' : 'light'}>
-            <h1>Simple Sum App</h1>
-            <p>Count: {count}</p>
-            <button onClick={handleButtonClick('increment')}>Increment</button>
-            <button onClick={handleButtonClick('decrement')}>Decrement</button>
-            <button onClick={handleButtonClick('reset')}>Reset</button>
-            <button onClick={toggleTheme}>Toggle Dark Mode</button>
+            <div>
+                <h1>Counting</h1>
+                <p>Count: {count}</p>
+                <button onClick={handleButtonClick('increment')}>Increment</button>
+                <button onClick={handleButtonClick('decrement')}>Decrement</button>
+                <button onClick={handleButtonClick('reset')}>Reset</button>
+                <button onClick={toggleTheme}>Toggle Dark Mode</button>
+            </div>
+            <div>
+
+            </div>
         </div>
     );
 }
