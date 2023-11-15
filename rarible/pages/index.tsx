@@ -23,10 +23,10 @@ function Home() {
             <div>
                 {loading ? (
                     <div>Loading...</div>
+                ) : itemsArr && itemsArr.length > 0 ? (
+                    itemsArr.map((item) => <ItemCard key={item.id} item={item} />)
                 ) : (
-                    itemsArr.map((item) => (
-                        <ItemCard key={item.id} item={item} />
-                    ))
+                    <div>No items available</div>
                 )}
             </div>
         </div>
