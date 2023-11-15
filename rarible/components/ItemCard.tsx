@@ -31,7 +31,6 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
                     height={100}
                     alt={item.name}
                     className="rounded shadow object-cover h-96 w-full"
-                    loading={"lazy"}
                 />
             </Link>
             <ImageTitle>
