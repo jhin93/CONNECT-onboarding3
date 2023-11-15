@@ -9,7 +9,6 @@ const getItems = async() =>  {
     try {
         const rawData = await axios.get(localURL + '/api/itemListFetch');
         rawDataList = rawData.data.listings
-        console.log("(getItem.ts)rawDataList : ", rawDataList)
         rawDataList.map((item) => (itemMetadataArr.push(item.metadata)))
         return itemMetadataArr;
     } catch (error) {

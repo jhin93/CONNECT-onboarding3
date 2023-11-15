@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { useEffect } from "react";
+import ItemCard from "../components/ItemCard";
 
 type ActionType = 'increment' | 'decrement' | 'reset'
 
@@ -9,15 +10,16 @@ function Home() {
     const dispatch = useDispatch();
     const count = useSelector((state: RootState) => state.counter);
     const isDarkMode = useSelector((state: RootState) => state.theme.isDarkMode)
-    const items = useSelector((state: RootState) => state.item.items);
+    const itemsArr = useSelector((state: RootState) => state.item.items);
+    const loading = useSelector((state: RootState) => state.item.loading);
 
     useEffect(() => {
         dispatch({type: 'ITEM/FETCH_ITEMS_ASYNC'});
     }, []);
 
     useEffect(() => {
-        console.log('(index.tsx)Items have been updated:', items);
-    }, [items]); // 아이템 리스트에 변경이 있을 때 실행
+        console.log('(index.tsx)Items have been updated:', itemsArr);
+    }, [itemsArr]); // 아이템 리스트에 변경이 있을 때 실행
 
     const toggleTheme = () => {
         dispatch({ type: 'THEME/TOGGLE_DARK_MODE_ASYNC' });
@@ -50,7 +52,13 @@ function Home() {
                 <button onClick={toggleTheme}>Toggle Dark Mode</button>
             </div>
             <div>
-
+                {loading ? (
+                    <div>Loading...</div>
+                ) : (
+                    itemsArr.map((item) => (
+                        <ItemCard key={item.id} item={item} />
+                    ))
+                )}
             </div>
         </div>
     );
