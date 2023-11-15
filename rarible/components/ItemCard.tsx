@@ -24,7 +24,7 @@ interface ItemCardProps {
 const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
     return (
         <div className="card">
-            <Link href={`/item/${item.id}`}>
+            <Link href={`/itemDetail/${item.id}`}>
                 <Image
                     src={item.image}
                     width={100}
