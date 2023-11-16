@@ -14,11 +14,14 @@ function Home() {
     const searchResult = useSelector((state: RootState) => state.item.searchResult);
 
     useEffect(() => {
-        dispatch({type: 'ITEM/FETCH_ITEMS_ASYNC'});
+        dispatch({ type: 'ITEM/FETCH_ITEMS_ASYNC' });
     }, []);
 
     useEffect(() => {
         console.log('(index.tsx)Items have been updated:', itemsArr);
+        // 페이지 최초 렌더링 시에도 모든 아이템이 나타나도록 초기 검색어를 빈 문자열로 설정합니다.
+        setSearchTerm("");
+        dispatch(setSearchResult(itemsArr)); // 모든 아이템 표시
     }, [itemsArr]);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -29,14 +32,9 @@ function Home() {
     };
 
     const performSearch = (searchTerm: string) => {
-        // 검색어가 빈 문자열인 경우 모든 아이템을 검색 결과로 사용
-        if (searchTerm === "") {
-            dispatch(setSearchResult(itemsArr));
-        } else {
-            // 정확한 일치 비교
-            const filteredItems = itemsArr.filter(item => item.name === searchTerm);
-            dispatch(setSearchResult(filteredItems));
-        }
+        // 포함하는 값이 있는지 검사
+        const filteredItems = itemsArr.filter(item => item.name.includes(searchTerm));
+        dispatch(setSearchResult(filteredItems));
     };
 
     return (
