@@ -19,15 +19,13 @@ function Home() {
 
     useEffect(() => {
         console.log('(index.tsx)Items have been updated:', itemsArr);
-        // 페이지 최초 렌더링 시에도 모든 아이템이 나타나도록 초기 검색어를 빈 문자열로 설정합니다.
         setSearchTerm("");
-        dispatch(setSearchResult(itemsArr)); // 모든 아이템 표시
+        dispatch(setSearchResult(itemsArr)); // 페이지 최초 렌더링 시에도 모든 아이템이 나타나도록 초기 검색어를 빈 문자열로 설정
     }, [itemsArr]);
 
     const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
-            // Enter 키를 눌렀을 때만 검색을 수행합니다.
-            performSearch(e.currentTarget.value);
+            performSearch(e.currentTarget.value); // Enter 키 입력시 검색 실행
         }
     };
 
