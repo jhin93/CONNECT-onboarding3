@@ -22,10 +22,15 @@ function Home() {
     }, [itemsArr]); // 아이템 리스트에 변경이 있을 때 실행
 
     useEffect(() => {
-        // 검색어가 변경될 때마다 검색 결과를 업데이트합니다.
-        const filteredItems = itemsArr.filter(item => item.name.includes(searchTerm));
-        dispatch(setSearchResult(filteredItems));
-    }, [searchTerm, itemsArr]); // 검색어나 아이템 리스트가 변경될 때 실행
+        if (searchTerm === "") {
+            // 검색어가 빈 문자열인 경우 모든 아이템을 검색 결과로 사용
+            dispatch(setSearchResult(itemsArr));
+        } else {
+            // 정확한 일치 비교
+            const filteredItems = itemsArr.filter(item => item.name === searchTerm);
+            dispatch(setSearchResult(filteredItems));
+        }
+    }, [searchTerm, itemsArr]);
 
     return (
         <div>
