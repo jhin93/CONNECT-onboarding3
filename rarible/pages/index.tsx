@@ -30,7 +30,6 @@ function Home() {
     };
 
     const performSearch = (searchTerm: string) => {
-        // 포함하는 값이 있는지 검사
         const filteredItems = itemsArr.filter(item => item.name.includes(searchTerm));
         dispatch(setSearchResult(filteredItems));
     };
