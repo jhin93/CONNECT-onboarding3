@@ -13,8 +13,17 @@ const HomeContainer = styled.div`
 
 const ItemGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 5개의 열 */
-  gap: 2vw; /* 열과 행 사이의 간격 설정 */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 2vw;
+  border-radius: 8px;
+`;
+
+const SearchInput = styled.input`
+  width: 30%;
+  margin: 40px auto;
+  display: block;
+  padding: 8px;
+  border-radius: 8px;
 `;
 
 function Home() {
@@ -48,9 +57,9 @@ function Home() {
     return (
         <HomeContainer>
             <div>
-                <input
+                <SearchInput
                     type="text"
-                    placeholder="Search by item name"
+                    placeholder="Search with item name"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={handleKeyDown} // Enter 키 입력 감지
