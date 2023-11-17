@@ -1,20 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from "next/link";
-import Image from 'next/image';
-import styled from '@emotion/styled';
 import itemMetadata from '../types/itemMetadata';
-
-const ImageTitle = styled.div`
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ItemName = styled.p`
-  font-size: large;
-`;
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 interface ItemCardProps {
     item: itemMetadata;
@@ -25,17 +15,22 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
     return (
         <div className="card">
             <Link href={`/itemDetail/${item.id}`}>
-                <Image
-                    src={item.image}
-                    width={100}
-                    height={100}
-                    alt={item.name}
-                    className="rounded shadow object-cover h-96 w-full"
+                <Card sx={{ maxWidth: 345 }}>
+                <CardMedia
+                    sx={{ height: 140 }}
+                    image={item.image}
+                    title="green iguana"
                 />
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {item.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        Azuki starts with a collection of 10,000 avatars that give you membership access to The Garden: a corner of the internet where artists, builders, and web3 enthusiasts meet to create a decentralized future.
+                    </Typography>
+                </CardContent>
+            </Card>
             </Link>
-            <ImageTitle>
-                <ItemName className="text-lg">{item.name}</ItemName>
-            </ImageTitle>
         </div>
     );
 };
