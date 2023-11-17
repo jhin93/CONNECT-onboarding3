@@ -5,6 +5,17 @@ import { RootState } from '../store/store';
 import { useEffect, useState } from "react";
 import ItemCard from "../components/ItemCard";
 import { setSearchResult } from '../store/fetch/itemSlice';
+import styled from '@emotion/styled';
+
+const HomeContainer = styled.div`
+  padding: 0 16vw;
+`
+
+const ItemGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 5개의 열 */
+  gap: 2vw; /* 열과 행 사이의 간격 설정 */
+`;
 
 function Home() {
     const dispatch = useDispatch();
@@ -35,7 +46,7 @@ function Home() {
     };
 
     return (
-        <div>
+        <HomeContainer>
             <div>
                 <input
                     type="text"
@@ -44,19 +55,19 @@ function Home() {
                     onChange={(e) => setSearchTerm(e.target.value)}
                     onKeyDown={handleKeyDown} // Enter 키 입력 감지
                 />
+            </div>
                 {loading ? (
                     <div>Loading...</div>
                 ) : (
-                    <div>
+                    <ItemGrid>
                         {searchResult.length > 0 ? (
                             searchResult.map((item) => <ItemCard key={item.id} item={item} />)
                         ) : (
                             <div>No items available</div>
                         )}
-                    </div>
+                    </ItemGrid>
                 )}
-            </div>
-        </div>
+        </HomeContainer>
     );
 }
 

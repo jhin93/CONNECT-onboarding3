@@ -17,9 +17,9 @@ const ItemCard: React.FC<ItemCardProps> = ({ item }) => {
             <Link href={`/itemDetail/${item.id}`}>
                 <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
-                    sx={{ height: 140 }}
+                    sx={{ height: 320 }}
                     image={item.image}
-                    title="green iguana"
+                    title="azukiItem"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
