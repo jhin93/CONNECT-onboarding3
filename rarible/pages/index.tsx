@@ -36,7 +36,7 @@ function Home() {
     const loading = useSelector((state: RootState) => state.item.loading);
     const [searchTerm, setSearchTerm] = useState("");
     const searchResult = useSelector((state: RootState) => state.item.searchResult);
-    const [gridColumns, setGridColumns] = useState(4); // 초기 열 수를 4로 설정
+    const [gridColumns, setGridColumns] = useState(4);
 
     useEffect(() => {
         dispatch({ type: 'ITEM/FETCH_ITEMS_ASYNC' });
