@@ -6,12 +6,14 @@ interface ItemState {
     items: ItemMetadata[];
     loading: boolean;
     error: string | null;
+    searchResult: ItemMetadata[];
 }
 
 const initialState: ItemState = {
     items: [],
     loading: false,
     error: null,
+    searchResult: [],
 };
 
 const itemSlice = createSlice({
@@ -30,9 +32,12 @@ const itemSlice = createSlice({
             state.loading = false;
             state.error = action.payload;
         },
+        setSearchResult(state, action: PayloadAction<ItemMetadata[]>) {
+            state.searchResult = action.payload;
+        },
     },
 });
 
-export const { fetchItemsStart, fetchItemsSuccess, fetchItemsFailure } = itemSlice.actions;
+export const { fetchItemsStart, fetchItemsSuccess, fetchItemsFailure, setSearchResult } = itemSlice.actions;
 
 export default itemSlice.reducer;
