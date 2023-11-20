@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@closet-design-system/core-connect": "^0.17.0",
+    "@closet-design-system/theme": "^0.0.21",
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.10.4",
     "@mui/material": "^5.14.18",

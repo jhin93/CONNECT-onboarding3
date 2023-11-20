@@ -76,17 +76,22 @@ function Home() {
                 <button onClick={() => handleGridChange(4)}>4 열</button>
                 <button onClick={() => handleGridChange(5)}>5 열</button>
             </NavBar>
-            {loading ? (
-                <div>Loading...</div>
-            ) : (
-                <ItemGrid style={{ gridTemplateColumns: `repeat(${gridColumns}, 1fr)` }}>
-                    {searchResult.length > 0 ? (
-                        searchResult.map((item) => <ItemCard key={item.id} item={item} />)
-                    ) : (
-                        <div>No items available</div>
-                    )}
-                </ItemGrid>
-            )}
+            {/*{loading ? (*/}
+            {/*    <div>Loading...</div>*/}
+            {/*) : (*/}
+            {/*    <ItemGrid style={{ gridTemplateColumns: `repeat(${gridColumns}, 1fr)` }}>*/}
+            {/*        {searchResult.length > 0 ? (*/}
+            {/*            searchResult.map((item) => <ItemCard key={item.id} item={item} loading={loading} />)*/}
+            {/*        ) : (*/}
+            {/*            <div>No items available</div>*/}
+            {/*        )}*/}
+            {/*    </ItemGrid>*/}
+            {/*)}*/}
+            <ItemGrid style={{ gridTemplateColumns: `repeat(${gridColumns}, 1fr)` }}>
+                {searchResult.map((item) => (
+                    <ItemCard key={item.id} item={item} loading={loading} />
+                ))}
+            </ItemGrid>
         </HomeContainer>
     );
 }
